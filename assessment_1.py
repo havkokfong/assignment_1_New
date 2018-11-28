@@ -2,6 +2,8 @@
 Replace the contents of this module docstring with your own details.
 """
 
+song_file = open("songs.csv", "r")
+
 MENU = ("L - List songs\nA - Add new song\nC - Complete a song\nQ - Quit\n\nPlease select your choices:\n>>> ")
 
 def main():
@@ -19,3 +21,4 @@ def main():
             choice
     exit()
 main()
+song_file.close()
