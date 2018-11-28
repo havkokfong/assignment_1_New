@@ -15,10 +15,12 @@ def main():
             print("This is your songs list:")
 
         elif choice == "A":
-            list = []
+            song_lists = []
             song_title = input("Please enter your song title: ")
-
-
+            while not titlecheck(song_title):
+                print("You have entered an invalid title.")
+                song_title = input("Please enter your song title: ")
+            song_lists.append(song_title)
             song_artist = input("Please enter the artist name: ")
 
 
@@ -26,7 +28,7 @@ def main():
             while not yearcheck(song_year):
                 print("You have entered an invalid year.")
                 song_year = input("Please enter the year: ")
-            list.append(song_year)
+            song_lists.append(song_year)
             choice = input(MENU).upper()
         elif choice == "C":
             print()
@@ -36,12 +38,18 @@ def main():
     exit()
 
 
+def titlecheck(song_title):
+    titlelenght = len(song_title)
+    if titlelenght < 1 and titlelenght > 30:
+        return True
+    return True
+
+
 def yearcheck(song_year):
     yearlenght = len(song_year)
     if yearlenght != 4:
-        return False
-    return True
-
+        return True
+    return False
 
 
 
