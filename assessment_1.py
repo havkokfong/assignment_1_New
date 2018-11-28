@@ -6,6 +6,7 @@ song_file = open("songs.csv", "r")
 
 MENU = ("L - List songs\nA - Add new song\nC - Complete a song\nQ - Quit\n\nPlease select your choices:\n>>> ")
 
+
 def main():
     print("Songs To Learn 1.0 - by <Kokfong Hav>")
     choice = input(MENU).upper()
@@ -14,24 +15,33 @@ def main():
             print("This is your songs list:")
 
         elif choice == "A":
-            #song_title = input("Please enter your song title: ")
-            #song_artist = input("Please enter the artist name: ")
-            while not yearcheck():
+            list = []
+            song_title = input("Please enter your song title: ")
+
+
+            song_artist = input("Please enter the artist name: ")
+
+
+            song_year = input("Please enter the year: ")
+            while not yearcheck(song_year):
                 print("You have entered an invalid year.")
+                song_year = input("Please enter the year: ")
+            list.append(song_year)
+            choice = input(MENU).upper()
         elif choice == "C":
             print()
         else:
             print("Please enter the valid letter.")
-            choice
+            choice = input(MENU).upper()
     exit()
 
 
-def yearcheck():
-    song_year = input("Please enter the year: ")
+def yearcheck(song_year):
     yearlenght = len(song_year)
-    if yearlenght < 1 or yearlenght > 4:
-        return True
-        song_year = input("Please enter the year: ")
+    if yearlenght != 4:
+        return False
+    return True
+
 
 
 
