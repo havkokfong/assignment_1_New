@@ -4,11 +4,10 @@ Replace the contents of this module docstring with your own details.
 
 song_file = open("songs.csv", "r")
 
-MENU = ("L - List songs\nA - Add new song\nC - Complete a song\nQ - Quit\n\nPlease select your choices:\n>>> ")
+MENU = ("Songs To Learn 1.0 - by <Kokfong Hav>\nL - List songs\nA - Add new song\nC - Complete a song\nQ - Quit\n\nPlease select your choices:\n>>> ")
 
 
 def main():
-    print("Songs To Learn 1.0 - by <Kokfong Hav>")
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
@@ -22,8 +21,10 @@ def main():
                 song_title = input("Please enter your song title: ")
             song_lists.append(song_title)
             song_artist = input("Please enter the artist name: ")
-
-
+            while not artistcheck(song_artist):
+                print("You have entered an invalid title.")
+                song_artist = input("Please enter the artist name: ")
+            song_lists.append(song_artist)
             song_year = input("Please enter the year: ")
             while not yearcheck(song_year):
                 print("You have entered an invalid year.")
@@ -40,16 +41,23 @@ def main():
 
 def titlecheck(song_title):
     titlelenght = len(song_title)
-    if titlelenght < 1 and titlelenght > 30:
+    if titlelenght > 0 and titlelenght < 30:
         return True
-    return True
+    return False
+
+
+def artistcheck(song_artist):
+    artistlength = len(song_artist)
+    if artistlength > 0 and artistlength < 20:
+        return True
+    return False
 
 
 def yearcheck(song_year):
     yearlenght = len(song_year)
     if yearlenght != 4:
-        return True
-    return False
+        return False
+    return True
 
 
 
