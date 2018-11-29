@@ -1,18 +1,26 @@
 """
 Replace the contents of this module docstring with your own details.
 """
+import csv
 
-song_file = open("songs.csv", "r")
 
-MENU = ("Songs To Learn 1.0 - by <Kokfong Hav>\nL - List songs\nA - Add new song\nC - Complete a song\nQ - Quit\n\nPlease select your choices:\n>>> ")
+MENU = (">>> Menu:\n'L' - List songs\n'A'- Add new song\n'C' - Complete a song\n'Q' - Quit\n\nPlease select your choices:\n>>> ")
 
 
 def main():
+    print("Songs To Learn 1.0 - by <Kokfong Hav>")
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
             print("This is your songs list:")
-
+            with open('songs.csv', 'r') as csv_file:
+                csv_reader = csv.reader(csv_file)
+                count = 0
+                for line in csv_reader:
+                    count += 1
+                    print("{:<1}.".format(count), "{:<35s}- {:<25s} ({:^4s})".format(line[0], line[1], line[2]))
+            print("\n")
+            choice = input(MENU).upper()
         elif choice == "A":
             song_lists = []
             song_title = input("Please enter your song title: ")
