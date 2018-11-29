@@ -68,6 +68,5 @@ def yearcheck(song_year):
     return True
 
 
-
 main()
-song_file.close()
+
