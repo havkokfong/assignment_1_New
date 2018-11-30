@@ -3,8 +3,14 @@ Replace the contents of this module docstring with your own details.
 """
 import csv
 
+MENU = (">>> Menu:\n'L' - List songs\n'A'- Add new song\n'C' - Complete a song\n"
+        "''Q' - Quit\n\nPlease select your choices:\n>>> ")
+song_list = []
 
-MENU = (">>> Menu:\n'L' - List songs\n'A'- Add new song\n'C' - Complete a song\n'Q' - Quit\n\nPlease select your choices:\n>>> ")
+with open('songs.csv', 'r') as csv_file:
+    csv_reader = csv.reader(csv_file)
+    for line in csv_reader:
+        song_list.append(line)
 
 
 def main():
@@ -13,16 +19,14 @@ def main():
     while choice != "Q":
         if choice == "L":
             print("This is your songs list:")
-            with open('songs.csv', 'r') as csv_file:
-                csv_reader = csv.reader(csv_file)
-                count = 0
-                for line in csv_reader:
-                    count += 1
-                    print("{:<1}.".format(count), "{:<35s}- {:<25s} ({:^4s})".format(line[0], line[1], line[2]))
+            count = 0
+            for element in song_list:
+                count += 1
+                print("{:<1}.".format(count),
+                        "{:<1s} {:<35s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
             print("\n")
             choice = input(MENU).upper()
         elif choice == "A":
-            song_lists = []
             song_title = input("Please enter your song title: ")
             while not titlecheck(song_title):
                 print("You have entered an invalid title.")
@@ -67,6 +71,12 @@ def yearcheck(song_year):
         return False
     return True
 
+# def requriecheck():
+#     if song_list[3] == "y":
+#         require = "*"
+#     else:
+#         require = ' '
+#         return require
 
 main()
 
