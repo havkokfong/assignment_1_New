@@ -20,7 +20,8 @@ def main():
         if choice == "L":
             print("This is your songs list:")
             for index, element in enumerate(song_list):
-                print("{:>1}.".format(index), "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
+                print("{:>1}.".format(index),
+                      "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
             print("\n")
             choice = input(MENU).upper()
         elif choice == "A":
@@ -68,12 +69,6 @@ def yearcheck(song_year):
         return False
     return True
 
-# def requriecheck():
-#     if song_list[3] == "y":
-#         require = "*"
-#     else:
-#         require = ' '
-#         return require
 
 main()
 
