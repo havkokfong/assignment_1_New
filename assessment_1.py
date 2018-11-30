@@ -19,11 +19,8 @@ def main():
     while choice != "Q":
         if choice == "L":
             print("This is your songs list:")
-            count = 0
-            for element in song_list:
-                count += 1
-                print("{:<1}.".format(count),
-                        "{:<1s} {:<35s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
+            for index, element in enumerate(song_list):
+                print("{:>1}.".format(index), "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
             print("\n")
             choice = input(MENU).upper()
         elif choice == "A":
