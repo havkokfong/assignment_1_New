@@ -74,7 +74,8 @@ def main():
         else:
             print("Please enter the valid letter.")
             choice = input(MENU).upper()
-
+    print(len(song_list), "songs saved to songs.csv")
+    print("Have a nice day.")
     exit()
 
 
