@@ -58,6 +58,7 @@ def main():
 
         elif choice == "C":
             complete = int(input("Enter the number of a song to mark as learned \n>>>"))
+            song_list[complete][3] = " "
             print(song_list[complete][0])
             choice = input(MENU).upper()
 
