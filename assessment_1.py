@@ -5,7 +5,7 @@ import csv
 
 
 MENU = (">>> Menu:\n'L' - List songs\n'A'- Add new song\n'C' - Complete a song\n"
-        "''Q' - Quit\n\nPlease select your choices:\n>>> ")
+        "'Q' - Quit\n\nPlease select your choices:\n>>> ")
 
 song_list = []
 
@@ -57,18 +57,8 @@ def main():
             choice = input(MENU).upper()
 
         elif choice == "C":
-            count = 0
-            learned = 0
-            print("Song you need to complete:")
-            for i in range(len(song_list)):
-                if song_list[i][3] == "*":
-                    count += 1
-                    print(count, "{:<1s} {:<30s}- {:<25s}({:^4s})".format(song_list[i][3], song_list[i][0],
-                                                                          song_list[i][1], song_list[i][2]))
-                else:
-                    learned += 1
-            print("\n")
-            print(count, "songs need to learn,", learned, "have learned\n")
+            complete = int(input("Enter the number of a song to mark as learned \n>>>"))
+            print(song_list[complete][0])
             choice = input(MENU).upper()
 
         else:
