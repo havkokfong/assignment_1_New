@@ -9,6 +9,7 @@ MENU = (">>> Menu:\n'L' - List songs\n'A'- Add new song\n'C' - Complete a song\n
 
 song_list = []
 
+
 with open('songs.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
@@ -27,10 +28,18 @@ def main():
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
+            learned = 0
+            unlearn = 0
             print("This is your songs list:")
             for index, element in enumerate(song_list):
                 print("{:>1}.".format(index),
                       "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
+            for i in range(len(song_list)):
+                if song_list[i][3] == "*":
+                    learned += 1
+                else:
+                    unlearn += 1
+            print(unlearn, "is learned", learned, "songs still need to learn")
             print("\n")
             choice = input(MENU).upper()
 
