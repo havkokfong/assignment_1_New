@@ -4,9 +4,9 @@ Replace the contents of this module docstring with your own details.
 import csv
 
 
-
 MENU = (">>> Menu:\n'L' - List songs\n'A'- Add new song\n'C' - Complete a song\n"
         "''Q' - Quit\n\nPlease select your choices:\n>>> ")
+
 song_list = []
 
 with open('songs.csv', 'r') as csv_file:
@@ -33,6 +33,7 @@ def main():
                       "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
             print("\n")
             choice = input(MENU).upper()
+
         elif choice == "A":
             song_title = input("Please enter your song title: ")
             while not titlecheck(song_title):
@@ -50,11 +51,14 @@ def main():
                 song_year = input("Please enter the year: ")
             song_lists.append(song_year)
             choice = input(MENU).upper()
+
         elif choice == "C":
             print()
+
         else:
             print("Please enter the valid letter.")
             choice = input(MENU).upper()
+
     exit()
 
 
