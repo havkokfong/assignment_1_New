@@ -51,7 +51,7 @@ def main():
                 print("You have entered an invalid year.")
                 song_year = input("Please enter the year: ")
             song_lists.append(song_year)
-            require = " "
+            require = "*"
             song_lists.append(require)
             song_list.append(song_lists)
             choice = input(MENU).upper()
