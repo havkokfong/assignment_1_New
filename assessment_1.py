@@ -35,6 +35,7 @@ def main():
             choice = input(MENU).upper()
 
         elif choice == "A":
+            song_lists = []
             song_title = input("Please enter your song title: ")
             while not titlecheck(song_title):
                 print("You have entered an invalid title.")
@@ -50,6 +51,9 @@ def main():
                 print("You have entered an invalid year.")
                 song_year = input("Please enter the year: ")
             song_lists.append(song_year)
+            require = " "
+            song_lists.append(require)
+            song_list.append(song_lists)
             choice = input(MENU).upper()
 
         elif choice == "C":
