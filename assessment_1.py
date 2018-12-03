@@ -59,7 +59,7 @@ def main():
         elif choice == "C":
             count = 0
             learned = 0
-            print("Song you need to complete")
+            print("Song you need to complete:")
             for i in range(len(song_list)):
                 if song_list[i][3] == "*":
                     count += 1
@@ -68,7 +68,7 @@ def main():
                 else:
                     learned += 1
             print("\n")
-            print(count, "songs need to learn", learned, "have learned\n")
+            print(count, "songs need to learn,", learned, "have learned\n")
             choice = input(MENU).upper()
 
         else:
