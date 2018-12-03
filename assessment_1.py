@@ -14,6 +14,7 @@ with open('songs.csv', 'r') as csv_file:
     for line in csv_reader:
         song_list.append(line)
 
+
 for j in range(len(song_list)):
     if song_list[j][3] == "y":
         song_list[j][3] = "*"
@@ -28,36 +29,47 @@ def main():
         if choice == "L":
             print("This is your songs list:")
             for index, element in enumerate(song_list):
-
                 print("{:>1}.".format(index),
                       "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
             print("\n")
             choice = input(MENU).upper()
 
         elif choice == "A":
-            song_lists = []
+            new_song_lists = []
             song_title = input("Please enter your song title: ")
             while not titlecheck(song_title):
                 print("You have entered an invalid title.")
                 song_title = input("Please enter your song title: ")
-            song_lists.append(song_title)
+            new_song_lists.append(song_title)
             song_artist = input("Please enter the artist name: ")
             while not artistcheck(song_artist):
                 print("You have entered an invalid title.")
                 song_artist = input("Please enter the artist name: ")
-            song_lists.append(song_artist)
+            new_song_lists.append(song_artist)
             song_year = input("Please enter the year: ")
             while not yearcheck(song_year):
                 print("You have entered an invalid year.")
                 song_year = input("Please enter the year: ")
-            song_lists.append(song_year)
+            new_song_lists.append(song_year)
             require = "*"
-            song_lists.append(require)
-            song_list.append(song_lists)
+            new_song_lists.append(require)
+            song_list.append(new_song_lists)
             choice = input(MENU).upper()
 
         elif choice == "C":
-            print()
+            count = 0
+            learned = 0
+            print("Song you need to complete")
+            for i in range(len(song_list)):
+                if song_list[i][3] == "*":
+                    count += 1
+                    print(count, "{:<1s} {:<30s}- {:<25s}({:^4s})".format(song_list[i][3], song_list[i][0],
+                                                                          song_list[i][1], song_list[i][2]))
+                else:
+                    learned += 1
+            print("\n")
+            print(count, "songs need to learn", learned, "have learned\n")
+            choice = input(MENU).upper()
 
         else:
             print("Please enter the valid letter.")
