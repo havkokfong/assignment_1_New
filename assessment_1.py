@@ -14,6 +14,12 @@ with open('songs.csv', 'r') as csv_file:
     for line in csv_reader:
         song_list.append(line)
 
+for j in range(len(song_list)):
+    if song_list[j][3] == "y":
+        song_list[j][3] = "*"
+    else:
+        song_list[j][3] = " "
+
 
 def main():
     print("Songs To Learn 1.0 - by <Kokfong Hav>")
@@ -22,6 +28,7 @@ def main():
         if choice == "L":
             print("This is your songs list:")
             for index, element in enumerate(song_list):
+
                 print("{:>1}.".format(index),
                       "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
             print("\n")
