@@ -2,7 +2,7 @@
 Replace the contents of this module docstring with your own details.
 """
 import csv
-
+import operator
 
 MENU = (">>> Menu:\n'L' - List songs\n'A'- Add new song\n'C' - Complete a song\n"
         "'Q' - Quit\n\nPlease select your choices:\n>>> ")
@@ -30,6 +30,7 @@ def main():
         if choice == "L":
             learned = 0
             unlearn = 0
+            song_list.sort(key=operator.itemgetter(1))
             print("This is your songs list:")
             for index, element in enumerate(song_list):
                 print("{:>1}.".format(index),
