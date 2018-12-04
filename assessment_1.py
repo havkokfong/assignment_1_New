@@ -75,6 +75,18 @@ def main():
         else:
             print("Please enter the valid letter.")
             choice = input(MENU).upper()
+
+    for k in range(len(song_list)):
+        if song_list[k][3] == "*":
+            song_list[k][3] = "y"
+        else:
+            song_list[k][3] = "n"
+
+    with open('songs.csv', 'w') as csv_list:
+        write = csv.writer(csv_list)
+        for e in range(len(song_list)):
+            write.writerow(song_list[e])
+    csv_list.close()
     print(len(song_list), "songs saved to songs.csv")
     print("Have a nice day.")
     exit()
