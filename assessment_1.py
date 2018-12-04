@@ -14,7 +14,7 @@ with open('songs.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
         song_list.append(line)
-
+csv_file.close()
 
 for j in range(len(song_list)):
     if song_list[j][3] == "y":
