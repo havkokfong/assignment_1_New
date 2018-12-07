@@ -90,7 +90,7 @@ def main():
         else:
             song_list[k][3] = "n"
 
-
+""" Write songs on CSV file """
     output_file = open('songs.csv', 'w')
     for e in song_list:
         output_row = e[0] + "," + e[1] + "," + e[2] + "," + e[3] + "\n"
