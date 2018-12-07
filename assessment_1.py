@@ -46,24 +46,7 @@ def main():
 
         elif choice == "A":
             new_song_lists = []
-            song_title = input("Please enter your song title: ")
-            while not titlecheck(song_title):
-                print("You have entered an invalid title.")
-                song_title = input("Please enter your song title: ")
-            new_song_lists.append(song_title)
-            song_artist = input("Please enter the artist name: ")
-            while not artistcheck(song_artist):
-                print("You have entered an invalid title.")
-                song_artist = input("Please enter the artist name: ")
-            new_song_lists.append(song_artist)
-            song_year = input("Please enter the year: ")
-            while not yearcheck(song_year):
-                print("You have entered an invalid year.")
-                song_year = input("Please enter the year: ")
-            new_song_lists.append(song_year)
-            require = "*"
-            new_song_lists.append(require)
-            song_list.append(new_song_lists)
+            add_song(new_song_lists)
             choice = input(MENU).upper()
 
         elif choice == "C":
@@ -90,7 +73,7 @@ def main():
         else:
             song_list[k][3] = "n"
 
-""" Write songs on CSV file """
+    """ Write songs on CSV file """
     output_file = open('songs.csv', 'w')
     for e in song_list:
         output_row = e[0] + "," + e[1] + "," + e[2] + "," + e[3] + "\n"
@@ -99,6 +82,27 @@ def main():
     print(len(song_list), "songs saved to songs.csv")
     print("Have a nice day.")
     exit()
+
+
+def add_song(new_song_lists):
+    song_title = input("Please enter your song title: ")
+    while not titlecheck(song_title):
+        print("You have entered an invalid title.")
+        song_title = input("Please enter your song title: ")
+    new_song_lists.append(song_title)
+    song_artist = input("Please enter the artist name: ")
+    while not artistcheck(song_artist):
+        print("You have entered an invalid title.")
+        song_artist = input("Please enter the artist name: ")
+    new_song_lists.append(song_artist)
+    song_year = input("Please enter the year: ")
+    while not yearcheck(song_year):
+        print("You have entered an invalid year.")
+        song_year = input("Please enter the year: ")
+    new_song_lists.append(song_year)
+    require = "*"
+    new_song_lists.append(require)
+    song_list.append(new_song_lists)
 
 
 def titlecheck(song_title):
