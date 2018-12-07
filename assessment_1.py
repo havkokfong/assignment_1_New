@@ -1,5 +1,5 @@
 """
-Replace the contents of this module docstring with your own details.
+Hav Kokfong, 07/12/2018, Songs list program, https://github.com/havkokfong/assignment_1_New
 """
 import csv
 import operator
@@ -14,7 +14,7 @@ with open('songs.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
         song_list.append(line)
-csv_file.close()
+    csv_file.close()
 
 for j in range(len(song_list)):
     if song_list[j][3] == "y":
@@ -68,13 +68,21 @@ def main():
 
         elif choice == "C":
             complete = int(input("Enter the number of a song to mark as learned \n>>>"))
-            song_list[complete][3] = " "
-            print(song_list[complete][0])
-            choice = input(MENU).upper()
-
-        else:
-            print("Please enter the valid letter.")
-            choice = input(MENU).upper()
+        #     for complete in range(len(song_list)):
+        #         if song_list[complete][3] == "*":
+        #             song_list[complete][3] = " "
+        #             print(song_list[complete][0])
+        #             choice = input(MENU).upper()
+        #         elif :
+        #             print("No more songs learn!")
+        #             choice = input(MENU).upper()
+        #         else:
+        #             print("You have enter an invalid number")
+        #             choice = input(MENU).upper()
+        #
+        # else:
+        #     print("Please enter the valid letter.")
+        #     choice = input(MENU).upper()
 
     for k in range(len(song_list)):
         if song_list[k][3] == "*":
@@ -82,11 +90,12 @@ def main():
         else:
             song_list[k][3] = "n"
 
-    with open('songs.csv', 'w') as csv_list:
-        write = csv.writer(csv_list)
-        for e in range(len(song_list)):
-            write.writerow(song_list[e])
-    csv_list.close()
+
+    output_file = open('songs.csv', 'w')
+    for e in song_list:
+        output_row = e[0] + "," + e[1] + "," + e[2] + "," + e[3] + "\n"
+        output_file.write(output_row)
+    output_file.close()
     print(len(song_list), "songs saved to songs.csv")
     print("Have a nice day.")
     exit()
