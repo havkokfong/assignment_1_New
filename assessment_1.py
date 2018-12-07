@@ -51,21 +51,19 @@ def main():
 
         elif choice == "C":
             complete = int(input("Enter the number of a song to mark as learned \n>>>"))
-        #     for complete in range(len(song_list)):
-        #         if song_list[complete][3] == "*":
-        #             song_list[complete][3] = " "
-        #             print(song_list[complete][0])
-        #             choice = input(MENU).upper()
-        #         elif :
-        #             print("No more songs learn!")
-        #             choice = input(MENU).upper()
-        #         else:
-        #             print("You have enter an invalid number")
-        #             choice = input(MENU).upper()
-        #
-        # else:
-        #     print("Please enter the valid letter.")
-        #     choice = input(MENU).upper()
+            if complete in range(len(song_list)):
+                if song_list[complete][3] == "*":
+                    song_list[complete][3] = " "
+                    print(song_list[complete][0])
+                    choice = input(MENU).upper()
+                else:
+                    print("No more songs to learn")
+            else:
+                print("You have entered an invalid number.")
+
+        else:
+            print("Please enter the valid letter.")
+            choice = input(MENU).upper()
 
     for k in range(len(song_list)):
         if song_list[k][3] == "*":
@@ -107,7 +105,7 @@ def add_song(new_song_lists):
 
 def titlecheck(song_title):
     titlelenght = len(song_title)
-    if titlelenght > 0 and titlelenght < 30:
+    if 0 < titlelenght < 30:
         return True
     return False
 
