@@ -28,19 +28,7 @@ def main():
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
-            learned = 0
-            unlearn = 0
-            song_list.sort(key=operator.itemgetter(1))
-            print("This is your songs list:")
-            for index, element in enumerate(song_list):
-                print("{:>1}.".format(index),
-                      "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
-            for i in range(len(song_list)):
-                if song_list[i][3] == "*":
-                    learned += 1
-                else:
-                    unlearn += 1
-            print(unlearn, "is learned", learned, "songs still need to learn")
+            show_list()
             print("\n")
             choice = input(MENU).upper()
 
@@ -65,25 +53,57 @@ def main():
             print("Please enter the valid letter.")
             choice = input(MENU).upper()
 
-    """Convert * to y """
+    convert_require()
+    write_csv()
+    print(len(song_list), "songs saved to songs.csv")
+    print("Have a nice day.")
+    exit()
+
+
+"""Song list function"""
+
+
+def show_list():
+    learned = 0
+    unlearn = 0
+    song_list.sort(key=operator.itemgetter(1))
+    print("This is your songs list:")
+    for index, element in enumerate(song_list):
+        print("{:>1}.".format(index),
+              "{:<1s} {:<30s}- {:<25s}({:^4s})".format(element[3], element[0], element[1], element[2]))
+    for i in range(len(song_list)):
+        if song_list[i][3] == "*":
+            learned += 1
+        else:
+            unlearn += 1
+    print(unlearn, "is learned", learned, "songs still need to learn")
+
+
+"""Convert * to y  function"""
+
+
+def convert_require():
     for k in range(len(song_list)):
         if song_list[k][3] == "*":
             song_list[k][3] = "y"
         else:
             song_list[k][3] = "n"
 
-    """ Write songs on CSV file """
+
+""" Write songs on CSV file function """
+
+
+def write_csv():
     output_file = open('songs.csv', 'w')
     for e in song_list:
         output_row = e[0] + "," + e[1] + "," + e[2] + "," + e[3] + "\n"
         output_file.write(output_row)
     output_file.close()
-    print(len(song_list), "songs saved to songs.csv")
-    print("Have a nice day.")
-    exit()
 
 
 """Add Song function"""
+
+
 def add_song(new_song_lists):
     song_title = input("Please enter your song title: ")
     while not titlecheck(song_title):
@@ -105,7 +125,9 @@ def add_song(new_song_lists):
     song_list.append(new_song_lists)
 
 
-"""Check song title"""
+"""Check song title function"""
+
+
 def titlecheck(song_title):
     titlelenght = len(song_title)
     if 0 < titlelenght < 30:
@@ -113,11 +135,17 @@ def titlecheck(song_title):
     return False
 
 
+"""Check song artist name function"""
+
+
 def artistcheck(song_artist):
     artistlength = len(song_artist)
     if artistlength > 0 and artistlength < 20:
         return True
     return False
+
+
+"""Check year function"""
 
 
 def yearcheck(song_year):
