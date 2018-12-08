@@ -65,6 +65,7 @@ def main():
             print("Please enter the valid letter.")
             choice = input(MENU).upper()
 
+    """Convert * to y """
     for k in range(len(song_list)):
         if song_list[k][3] == "*":
             song_list[k][3] = "y"
@@ -82,6 +83,7 @@ def main():
     exit()
 
 
+"""Add Song function"""
 def add_song(new_song_lists):
     song_title = input("Please enter your song title: ")
     while not titlecheck(song_title):
@@ -103,6 +105,7 @@ def add_song(new_song_lists):
     song_list.append(new_song_lists)
 
 
+"""Check song title"""
 def titlecheck(song_title):
     titlelenght = len(song_title)
     if 0 < titlelenght < 30:
