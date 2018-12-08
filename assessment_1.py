@@ -1,6 +1,12 @@
 """
 Hav Kokfong, 07/12/2018, Songs list program, https://github.com/havkokfong/assignment_1_New
 """
+
+
+
+
+
+
 import csv
 import operator
 
@@ -10,17 +16,25 @@ MENU = (">>> Menu:\n'L' - List songs\n'A' - Add new song\n'C' - Complete a song\
 song_list = []
 
 
+"""Open csv file """
+
 with open('songs.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
         song_list.append(line)
     csv_file.close()
 
+
+"""Convert y to "*" """
+
 for j in range(len(song_list)):
     if song_list[j][3] == "y":
         song_list[j][3] = "*"
     else:
         song_list[j][3] = " "
+
+
+"""Define main function"""
 
 
 def main():
@@ -102,9 +116,6 @@ def complete_song(choice):
     return choice
 
 
-
-
-
 """Convert * to y  function"""
 
 
@@ -132,17 +143,17 @@ def write_csv():
 
 def add_song(new_song_lists):
     song_title = input("Please enter your song title: ")
-    while not titlecheck(song_title):
+    while not title_check(song_title):
         print("You have entered an invalid title.")
         song_title = input("Please enter your song title: ")
     new_song_lists.append(song_title)
     song_artist = input("Please enter the artist name: ")
-    while not artistcheck(song_artist):
+    while not artist_check(song_artist):
         print("You have entered an invalid title.")
         song_artist = input("Please enter the artist name: ")
     new_song_lists.append(song_artist)
     song_year = input("Please enter the year: ")
-    while not yearcheck(song_year):
+    while not year_check(song_year):
         print("You have entered an invalid year.")
         song_year = input("Please enter the year: ")
     new_song_lists.append(song_year)
@@ -154,7 +165,7 @@ def add_song(new_song_lists):
 """Check song title function"""
 
 
-def titlecheck(song_title):
+def title_check(song_title):
     titlelenght = len(song_title)
     if 0 < titlelenght < 30:
         return True
@@ -164,9 +175,9 @@ def titlecheck(song_title):
 """Check song artist name function"""
 
 
-def artistcheck(song_artist):
+def artist_check(song_artist):
     artistlength = len(song_artist)
-    if artistlength > 0 and artistlength < 20:
+    if 0 < artistlength < 20:
         return True
     return False
 
@@ -174,7 +185,7 @@ def artistcheck(song_artist):
 """Check year function"""
 
 
-def yearcheck(song_year):
+def year_check(song_year):
     yearlenght = len(song_year)
     if yearlenght != 4:
         return False
@@ -182,4 +193,3 @@ def yearcheck(song_year):
 
 
 main()
-
