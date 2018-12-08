@@ -4,7 +4,7 @@ Hav Kokfong, 07/12/2018, Songs list program, https://github.com/havkokfong/assig
 import csv
 import operator
 
-MENU = (">>> Menu:\n'L' - List songs\n'A'- Add new song\n'C' - Complete a song\n"
+MENU = (">>> Menu:\n'L' - List songs\n'A' - Add new song\n'C' - Complete a song\n"
         "'Q' - Quit\n\nPlease select your choices:\n>>> ")
 
 song_list = []
@@ -38,16 +38,8 @@ def main():
             choice = input(MENU).upper()
 
         elif choice == "C":
-            complete = int(input("Enter the number of a song to mark as learned \n>>>"))
-            if complete in range(len(song_list)):
-                if song_list[complete][3] == "*":
-                    song_list[complete][3] = " "
-                    print(song_list[complete][0])
-                    choice = input(MENU).upper()
-                else:
-                    print("No more songs to learn")
-            else:
-                print("You have entered an invalid number.")
+            choice = complete_check(choice)
+            choice = complete_song(choice)
 
         else:
             print("Please enter the valid letter.")
@@ -77,6 +69,40 @@ def show_list():
         else:
             unlearn += 1
     print(unlearn, "is learned", learned, "songs still need to learn")
+
+
+"""Check complete song function"""
+
+
+def complete_check(choice):
+    count = 0
+    for k in range(len(song_list)):
+        if "*" in song_list[k][3]:
+            count += 1
+    if count == 0:
+        print("No more song to learn")
+        choice = input(MENU).upper()
+    return choice
+
+
+"""Complete song function"""
+
+
+def complete_song(choice):
+    complete = int(input("Enter the number of a song to mark as learned \n>>> "))
+    if complete in range(len(song_list)):
+        if song_list[complete][3] == "*":
+            song_list[complete][3] = " "
+            print(song_list[complete][0])
+            choice = input(MENU).upper()
+        elif song_list[complete][3] != "*":
+            print("No more song to learn")
+    else:
+        print("You have entered an invalid number")
+    return choice
+
+
+
 
 
 """Convert * to y  function"""
