@@ -3,10 +3,6 @@ Hav Kokfong, 07/12/2018, Songs list program, https://github.com/havkokfong/assig
 """
 
 
-
-
-
-
 import csv
 import operator
 
@@ -15,6 +11,15 @@ MENU = (">>> Menu:\n'L' - List songs\n'A' - Add new song\n'C' - Complete a song\
 
 song_list = []
 
+
+""" Load songs:
+
+OPENFILE "song.csv" for read
+for line in song.csv:
+    
+CLOSEFILE "song.csv"
+
+"""
 
 """Open csv file """
 
@@ -38,6 +43,7 @@ for j in range(len(song_list)):
 
 
 def main():
+    print("\n")
     print("Songs To Learn 1.0 - by <Kokfong Hav>")
     choice = input(MENU).upper()
     while choice != "Q":
