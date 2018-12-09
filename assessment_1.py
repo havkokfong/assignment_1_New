@@ -14,10 +14,10 @@ song_list = []
 
 """ Load songs:
 
-OPENFILE "song.csv" for read
-for line in song.csv:
-    
-CLOSEFILE "song.csv"
+open songs "songs.csv"
+for line in songs:
+    song_list.append(line)    
+close songs
 
 """
 
@@ -103,6 +103,19 @@ def complete_check(choice):
         print("No more song to learn")
         choice = input(MENU).upper()
     return choice
+
+
+"""
+input number
+if number in range(len(song_list))
+    if song_list[number][0] = *
+        song_list[number][0] = 
+        display song_list[number][0]
+    otherwise if song_list[number][0] <> *
+        display "No more song to learn"
+otherwise
+    display "You have entered an invalid number"
+"""
 
 
 """Complete song function"""
